@@ -34,6 +34,7 @@ const scaleVariants = {
   
           <div className="tag-cmp app__flex">
             <p className="p-text">Web Developer</p>
+            <p className="p-text">Software Developer</p>
           </div>
         </div>
       </motion.div>
