@@ -37,9 +37,9 @@ The frontend is built using **React** and styled with **SCSS** for a modern and 
 
 ## 📁 Folder Structure
 
-```plaintext
+```
 .
-├── backend
+├── backend_sanity
 │   ├── about.js
 │   ├── author.js
 │   ├── blockContent.js
@@ -49,7 +49,7 @@ The frontend is built using **React** and styled with **SCSS** for a modern and 
 │   ├── skills.js
 │   ├── workExperience.js
 │   └── works.js
-├── frontend
+├── frontend_react
 │   ├── src
 │   │   ├── components
 │   │   │   ├── Navbar.jsx
@@ -66,7 +66,7 @@ The frontend is built using **React** and styled with **SCSS** for a modern and 
 │   │   ├── index.css
 │   │   └── index.js
 └── README.md
-
+```
 
 ## 🧑‍💻 Usage
 
