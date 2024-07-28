@@ -35,6 +35,39 @@ The frontend is built using **React** and styled with **SCSS** for a modern and 
 - **Backend**: Sanity.io
 - **Deployment**: Netlify
 
+## 📁 Folder Structure
+
+```plaintext
+.
+├── backend
+│   ├── about.js
+│   ├── author.js
+│   ├── blockContent.js
+│   ├── brands.js
+│   ├── contact.js
+│   ├── experiences.js
+│   ├── skills.js
+│   ├── workExperience.js
+│   └── works.js
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   │   ├── Navbar.jsx
+│   │   ├── container
+│   │   │   ├── About.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Skills.jsx
+│   │   │   └── Work.jsx
+│   │   ├── App.js
+│   │   ├── App.scss
+│   │   ├── client.js
+│   │   ├── images.js
+│   │   ├── index.css
+│   │   └── index.js
+└── README.md
+
+
 ## 🧑‍💻 Usage
 
 Visit the live website at [shamin-portfolio.netlify.app](https://shamin-portfolio.netlify.app) to explore the different sections:
