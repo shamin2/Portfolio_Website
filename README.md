@@ -79,6 +79,10 @@ Visit the live website at [shamin-portfolio.netlify.app](https://shamin-portfoli
 - **Projects**: A showcase of my projects, with links to live demos and source code.
 - **Contact Form**: A form to reach out to me directly for inquiries or collaborations.
 
+## 🤝 Contributing
+
+Special thanks to [Hossem](https://github.com/hossem7) for helping fix some small bugs in the project. Your contributions are greatly appreciated!
+
 ## 📧 Contact
 
 Author: Shamin Yasar  
