@@ -18,7 +18,9 @@
   flex: 1;
   width: 100%;
   height: 100%;
-  flex-direction: row;
+  display: flex;
+  flex-direction: row; /* Maintain horizontal layout for desktop */
+  align-items: center;
   padding: 6rem 2rem 0rem;
 
   @media screen and (min-width: 2000px) {
@@ -26,11 +28,13 @@
   }
 
   @media screen and (max-width: 1200px) {
-    flex-direction: column;
+    flex-direction: column; /* Allow stacking for medium screens */
+    align-items: flex-start;
   }
 
   @media screen and (max-width: 450px) {
-    padding: 6rem 1rem 2rem;
+    flex-direction: column; /* Stacking for mobile */
+    padding: 2rem 1rem;
   }
 }
 
@@ -64,6 +68,12 @@
     flex-direction: row;
     width: auto;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-5px); /* Slight lift on hover */
+      box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    }
   }
 
   .tag-cmp {
@@ -92,57 +102,142 @@
 
   .about__personal {
     margin-top: 2rem;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     background-color: #f9f9f9;
     border-radius: 15px;
     width: 100%;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
 
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: red;
-      text-align: center;
-      text-transform: uppercase;
+    &:hover {
+      transform: translateY(-10px); /* Slight lift */
+      box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+      background-color: #f9f9ff; /* Slightly tinted background */
     }
 
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      text-align: center;
-      color: var(--secondary-color);
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #e91e63; /* A nice, vibrant color */
+      text-transform: uppercase;
+      position: relative;
+
+      /*&:after {
+        content: '';
+        width: 60px;
+        height: 3px;
+        background-color: #e91e63;
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+      }*/
+
+      &:hover {
+        color: #ff4f81; /* Change heading color on hover */
+      }
+    }
+
+    .typing-effect {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #333;
+      max-width: 90%;
+      word-spacing: 2px;
+      overflow: hidden;
+      border-right: 3px solid #333;
+      white-space: nowrap;
+      animation: typing 4s steps(40, end), blink 0.7s step-end infinite;
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%; /* Fully reveal the text */
+        }
+      }
+    
+      @keyframes blink {
+        50% {
+          border-color: transparent; /* Make cursor blink */
+        }
+      }
     }
 
     @media screen and (max-width: 1200px) {
-      padding: 0.5rem 1rem;
-      margin-top: 1rem;
+      padding: 1rem 1.5rem;
 
       h2 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
 
-      p {
-        font-size: 0.9rem;
+      .typing-effect {
+        font-size: 1rem;
       }
     }
   }
 }
 
+.p-text.typing-effect {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #333; /* Blinking cursor */
+  width: 0; /* Start with no width */
+  animation: typing 4s steps(40, end), cursorDisappear 0s 3s forwards;
+  animation-fill-mode: forwards;
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%; /* Reveal the full text */
+    }
+  }
+
+
+  @keyframes cursorDisappear {
+    from {
+      border-right-color: #333; /* Cursor visible */
+    }
+    to {
+      border-right-color: transparent; /* Cursor disappears */
+    }
+  }
+  
+}
+
 .app__header-circles {
   flex: 0.75;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Default vertical layout for desktop */
   justify-content: space-evenly;
   align-items: flex-start;
   height: 100%;
   margin-left: 1rem;
+  
 
   div {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background: var(--white-color);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2) rotate(15deg); /* Slightly enlarge the icon */
+      box-shadow: 0px 8px 25px rgba(0, 123, 255, 0.5); /* Add a glowing effect */
+    }
 
     img {
       width: 60%;
@@ -173,14 +268,27 @@
     }
   }
 
+  /* Mobile-specific adjustments */
   @media screen and (max-width: 1200px) {
-    width: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: row; /* Change to side-by-side layout for mobile */
+    justify-content: center;
+    flex-wrap: nowrap;
     margin-left: 0;
 
     div {
-      margin: 1rem;
+      margin: 0 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    div:nth-child(2) {
+      width: 120px;
+      height: 120px; /* Reduce size for smaller screens */
+    }
+
+    div {
+      width: 80px;
+      height: 80px; /* Reduce size for smaller screens */
     }
   }
 }
@@ -197,6 +305,21 @@
     width: 100%;
     object-fit: contain;
     z-index: 1;
+    transform: scale(1.14);
+    transform-origin: bottom;
+    max-height: 95%;
+    height: auto;  
+    
+    
+    /*width: auto; 
+    height: auto; 
+    max-height: 90%; 
+    transform: scale(1.1); 
+    transform-origin: bottom; 
+    position: relative;
+    z-index: 1; 
+    transition: transform 0.3s ease-in-out;*/
+
   }
 
   .overlay_circle {
@@ -211,5 +334,36 @@
 
   @media screen and (max-width: 1200px) {
     margin: 2rem 0;
+    
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #555;
   }
 }

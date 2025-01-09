@@ -26,29 +26,29 @@ const Header = () => (
         <div className="badge-cmp app__flex">
           <span>👋</span>
           <div style={{ marginLeft: 20 }}>
-            <p className="p-text">Hello, I am</p>
+            <p className="p-text typing-effect">Hello, I am</p>
             <h1 className="head-text">Shamin Yasar</h1>
           </div>
         </div>
 
-        <div className="tag-cmp app__flex">
-          <p className="p-text">Web Developer</p>
-          <p className="p-text">Software Developer</p>
-        </div>
-
         <motion.div
-          whileInView={{ opacity: [0, 1] }}
-          transition={{ duration: 0.5, delayChildren: 0.5 }}
-          className="about__personal app__flex"
+          whileInView={{ opacity: [0, 1], y: [20, 0] }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="about__personal"
         >
           <div className="about__content">
             <h2>About Me</h2>
-            <p>
-              Hello, I am Shamin Yasar, a fourth-year student at Memorial University
-              of Newfoundland, pursuing a degree in Bachelor of science majoring in computer science and minoring in mathematics.As a fourth-year Computer Science student with a Mathematics minor, I thrive at the crossroads of technology and practical problem-solving. I enjoy tackling complex challenges, whether coding or experimenting with new recipes. Balancing my technical skills with passions for soccer and travel, I’m dedicated to continuous learning and growth through diverse experiences.
-
-  
-            </p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, ease: 'easeInOut' }}
+            >
+              Hi, I'm Shamin Yasar, a fourth-year Computer Science student at Memorial University,
+              with a Mathematics minor. I am a passionate full-stack developer with a deep enthusiasm for machine learning. I thrive at the intersection of technology and
+              problem-solving, coding solutions that make a difference. Beyond programming, I balance
+              my passion for tech with soccer, travel, and experimenting with new recipes. I’m driven
+              by curiosity, creativity, and a commitment to continuous growth.
+            </motion.p>
           </div>
         </motion.div>
       </div>
@@ -74,7 +74,7 @@ const Header = () => (
       whileInView={scaleVariants.whileInView}
       className="app__header-circles"
     >
-      {[images.flutter, images.redux, images.sass].map((circle, index) => (
+      {[images.flutter, images.react, images.sass].map((circle, index) => (
         <div className="circle-cmp app__flex" key={`circle-${index}`}>
           <img src={circle} alt="profile_bg" />
         </div>
