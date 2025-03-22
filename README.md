@@ -2,7 +2,7 @@
 
 ## 🚀 Overview
 
-Welcome to my portfolio website! This site showcases my skills, projects, and professional experiences. It's designed to provide an overview of my capabilities and to share the work that I'm most proud of.
+Welcome to my portfolio website! This site showcases my skills, projects, and professional experiences. It's designed to provide an overview of my capabilities and to share the work that I'm most proud of. I have put this site together to showcase the skills I’ve developed, the projects I have worked on, and the experiences that have shaped me professionally. It’s a reflection of my journey so far — the challenges I’ve taken on, the solutions I have built, and the areas where I continue to grow. Whether you’re here to explore my work or learn more about my background, I’m glad you stopped by.
 
 ### 🔧 Backend
 
