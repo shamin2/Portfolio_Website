@@ -81,7 +81,7 @@ Visit the live website at [shamin-portfolio.netlify.app](https://shamin-portfoli
 
 ## 🤝 Contributing
 
-Special thanks to [Hossem](https://github.com/hossem7) for helping fix some small bugs in the project. Your contributions are greatly appreciated!
+Special thanks to [Hossem](https://github.com/hossem7) for helping fix some small bugs in the portfolio. Your contributions are greatly appreciated!
 
 ## 📧 Contact
 
