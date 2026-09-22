@@ -1,95 +1,134 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-// import { Tooltip as ReactToolTip } from 'react-tooltip';
 
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
 
 const Skills = () => {
-  const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    const query = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
+    const query = '*[_type == "skills"]';
 
-    client.fetch(query).then((data) => {
-      setExperiences(data);
-    });
-
-    client.fetch(skillsQuery).then((data) => {
-      setSkills(data);
-    });
+    client
+      .fetch(query)
+      .then((data) => setSkills(data))
+      .catch((error) => {
+        console.error('Failed to fetch skills:', error);
+      });
   }, []);
 
   return (
-    <>
-      <h2 className="head-text">Skills & Experiences</h2>
+    <section className="skills">
+      <div className="skills__header">
+        <motion.div
+          className="skills__heading"
+          initial={{ opacity: 0, x: -25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+        >
+          <div className="skills__label">
+            <span />
+            Skills & Technologies
+          </div>
 
-      <div className="app__skills-container">
-        <motion.div className="app__skills-list">
-          {skills.map((skill) => (
-            <motion.div
-              whileInView={{ opacity: [0, 1] }}
-              transition={{ duration: 0.5 }}
-              className="app__skills-item app__flex"
-              key={skill.name}
-            >
-              <div
-                className="app__flex"
-                style={{ backgroundColor: skill.bgColor }}
-              >
-                <img src={urlFor(skill.icon)} alt={skill.name} />
-              </div>
-              <p className="p-text">{skill.name}</p>
-            </motion.div>
-          ))}
+          <h2>
+            Tools I <span>Work With</span>
+          </h2>
+
+          <p>
+            Technologies and tools I&apos;ve worked with across software
+            development, cloud, databases, testing, and data.
+          </p>
         </motion.div>
-        <div className="app__skills-exp">
-          {experiences.map((experience) => (
-            <motion.div
-              className="app__skills-exp-item"
-              key={experience.year}
-            >
-              <div className="app__skills-exp-year">
-                <p className="bold-text">{experience.year}</p>
-              </div>
-              <motion.div className="app__skills-exp-works">
-                {experience.works.map((work) => (
-                  <>
-                    <motion.div
-                      whileInView={{ opacity: [0, 1] }}
-                      transition={{ duration: 0.5 }}
-                      className="app__skills-exp-work"
-                      data-tip
-                      data-for={work.name}
-                      key={work.name}
-                    >
-                      <h4 className="bold-text">{work.name}</h4>
-                      <p className="p-text">{work.company}</p>
-                    </motion.div>
-                    {/* <ReactTooltip
-                      id={work.name}
-                      effect="solid"
-                      arrowColor="#fff"
-                      className="skills-tooltip"
-                    >
-                      {work.desc}
-                    </ReactTooltip> */}
-                  </>
-                ))}
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+
+        <motion.div
+          className="skills__statement"
+          initial={{ opacity: 0, x: 25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.55 }}
+        >
+          <span>Always learning.</span>
+          <strong>Always building.</strong>
+        </motion.div>
       </div>
-    </>
+
+      <motion.div
+        className="skills__grid"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.045,
+            },
+          },
+        }}
+      >
+        {skills.map((skill) => (
+          <motion.div
+            className="skills__item"
+            key={skill._id || skill.name}
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 25,
+                scale: 0.95,
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              },
+            }}
+            transition={{
+              duration: 0.4,
+              ease: 'easeOut',
+            }}
+            whileHover={{
+              y: -6,
+              transition: {
+                duration: 0.2,
+              },
+            }}
+          >
+            <motion.div
+              className="skills__icon"
+              style={{
+                '--skill-color': skill.bgColor || '#c72f58',
+              }}
+              whileHover={{
+                rotate: 360,
+                scale: 1.08,
+              }}
+              transition={{
+                duration: 0.55,
+                ease: 'easeInOut',
+              }}
+            >
+              {skill.icon && (
+                <img
+                  src={urlFor(skill.icon).width(160).url()}
+                  alt={skill.name}
+                />
+              )}
+            </motion.div>
+
+            <p>{skill.name}</p>
+          </motion.div>
+        ))}
+      </motion.div>
+    </section>
   );
 };
 
 export default AppWrap(
   MotionWrap(Skills, 'app__skills'),
   'skills',
-  'app__whitebg',
+  'app__primarybg'
 );

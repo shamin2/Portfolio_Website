@@ -1,188 +1,450 @@
+/* ================================
+   PORTFOLIO V2 — GLOBAL STYLES
+================================ */
+
+:root {
+  --bg-primary: #08090c;
+  --bg-secondary: #0d0e12;
+  --bg-card: #121318;
+  --bg-card-hover: #17191f;
+
+  --maroon: #8f1738;
+  --maroon-dark: #5f0d25;
+  --maroon-light: #c72f58;
+  --maroon-bright: #e43d69;
+
+  --white-color: #f7f7f8;
+  --black-color: #f7f7f8;
+  --gray-color: #a4a7b0;
+  --lightGray-color: rgba(255, 255, 255, 0.08);
+
+  --primary-color: #08090c;
+  --secondary-color: #c72f58;
+
+  --font-base: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-maroon: rgba(199, 47, 88, 0.35);
+
+  --container-width: 1400px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-primary);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--white-color);
+  font-family: var(--font-base);
+}
+
+::selection {
+  background: var(--maroon);
+  color: #fff;
+}
+
+
+/* ================================
+   APP
+================================ */
+
 .app {
-    background-color: var(--primary-color);
-    font-family: var(--font-base);
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 80% 5%,
+      rgba(143, 23, 56, 0.12),
+      transparent 28%
+    ),
+    var(--bg-primary);
+
+  font-family: var(--font-base);
+}
+
+.app__whitebg,
+.app__primarybg {
+  background: var(--bg-primary);
+}
+
+
+/* ================================
+   SECTION CONTAINER
+================================ */
+
+.app__container {
+  width: 100%;
+  min-height: auto;
+
+  display: flex;
+  flex-direction: row;
+
+  position: relative;
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+
+/* ================================
+   MAIN SECTION WRAPPER
+================================ */
+
+.app__wrapper {
+  flex: 1;
+
+  width: min(
+    var(--container-width),
+    calc(100% - 100px)
+  );
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 6rem 0;
+
+  position: relative;
+
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 60px);
+    padding: 5rem 0;
   }
-  
-  .app__whitebg {
-    background-color: var(--white-color);
+
+  @media screen and (max-width: 600px) {
+    width: calc(100% - 32px);
+    padding: 4rem 0;
   }
-  
-  .app__primarybg {
-    background-color: var(--primary-color);
+}
+
+
+/* ================================
+   FLEX UTILITY
+================================ */
+
+.app__flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* ================================
+   SECTION HEADINGS
+================================ */
+
+.head-text {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+
+  font-weight: 750;
+  line-height: 1.08;
+
+  text-align: left;
+
+  color: var(--white-color);
+
+  letter-spacing: -0.03em;
+
+  span {
+    color: var(--maroon-light);
   }
-  
-  .app__container {
-    width: 100%;
-    min-height: 100vh;
-  
-    display: flex;
-    flex-direction: row;
+
+  @media screen and (max-width: 600px) {
+    font-size: 2rem;
   }
-  
-  .app__flex {
+}
+
+
+/* ================================
+   NORMAL TEXT
+================================ */
+
+.p-text {
+  font-size: 0.95rem;
+  text-align: left;
+
+  color: var(--gray-color);
+
+  line-height: 1.7;
+
+  @media screen and (min-width: 1800px) {
+    font-size: 1.05rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ================================
+   BOLD TEXT
+================================ */
+
+.bold-text {
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: var(--white-color);
+
+  text-align: left;
+
+  @media screen and (min-width: 1800px) {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* ================================
+   SECTION LABEL
+================================ */
+
+.section-label {
+  color: var(--maroon-bright);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  margin-bottom: 0.6rem;
+}
+
+
+/* ================================
+   LINKS
+================================ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ================================
+   BUTTON BASE
+================================ */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.v2-button {
+  min-height: 48px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.6rem;
+
+  padding: 0 1.5rem;
+
+  border-radius: 8px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.v2-button--primary {
+  color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    var(--maroon),
+    var(--maroon-light)
+  );
+
+  border: 1px solid var(--maroon-light);
+
+  box-shadow:
+    0 10px 30px rgba(143, 23, 56, 0.18);
+
+  &:hover {
+    box-shadow:
+      0 12px 35px rgba(199, 47, 88, 0.3);
+  }
+}
+
+.v2-button--outline {
+  color: var(--white-color);
+
+  background: transparent;
+
+  border: 1px solid var(--border-maroon);
+
+  &:hover {
+    background: rgba(143, 23, 56, 0.1);
+    border-color: var(--maroon-light);
+  }
+}
+
+
+/* ================================
+   SOCIAL MEDIA
+================================ */
+
+.app__social {
+  position: fixed;
+
+  left: 1.5rem;
+  bottom: 2rem;
+
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.6rem;
+
+  div {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 10px;
+
+    background: rgba(15, 16, 20, 0.85);
+
+    border: 1px solid var(--border-color);
+
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .app__wrapper {
-    flex: 1;
-    width: 100%;
-    flex-direction: column;
-    padding: 4rem 2rem;
-  
-    @media screen and (max-width: 450px) {
-      padding: 4rem 1rem 2rem;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+      transform 0.3s ease,
+      background 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+
+    svg {
+      width: 17px;
+      height: 17px;
+
+      color: var(--gray-color);
+
+      transition: color 0.3s ease;
     }
-  }
-  
-  .copyright {
-    width: 100%;
-    padding: 2rem 0 0;
-  
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-  
-    p {
-      text-transform: uppercase;
-      color: var(--black-color);
-    }
-  }
-  
-  .head-text {
-    font-size: 2.75rem;
-    font-weight: 800;
-    text-align: center;
-    color: var(--black-color);
-    text-transform: capitalize;
-  
-    span {
-      color: var(--secondary-color);
-    }
-  
-    @media screen and (min-width: 2000px) {
-      font-size: 4rem;
-    }
-  
-    @media screen and (max-width: 450px) {
-      font-size: 2rem;
-    }
-  }
-  
-  .p-text {
-    font-size: 0.8rem;
-    text-align: left;
-    color: var(--gray-color);
-    line-height: 1.5;
-  
-    @media screen and (min-width: 2000px) {
-      font-size: 1.75rem;
-    }
-  }
-  
-  .bold-text {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--black-color);
-    text-align: left;
-  
-    @media screen and (min-width: 2000px) {
-      font-size: 2rem;
-    }
-  
-    @media screen and (max-width: 450px) {
-      font-size: 0.9rem;
-    }
-  }
-  
-  .app__social {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column;
-  
-    padding: 1rem;
-  
-    div {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: var(--white-color);
-      margin: 0.25rem 0;
-      border: 1px solid var(--lightGray-color);
-  
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  
-      transition: all 0.3s ease-in-out;
-  
+
+    &:hover {
+      transform: translateY(-4px);
+
+      background: rgba(143, 23, 56, 0.18);
+
+      border-color: var(--maroon-light);
+
+      box-shadow:
+        0 8px 25px rgba(143, 23, 56, 0.2);
+
       svg {
-        width: 15px;
-        height: 15px;
-        color: var(--gray-color);
-      }
-  
-      &:hover {
-        background-color: var(--secondary-color);
-        border-color: var(--secondary-color);
-  
-        svg {
-          color: var(--white-color);
-        }
-      }
-  
-      @media screen and (min-width: 2000px) {
-        width: 70px;
-        height: 70px;
-  
-        margin: 0.5rem 0;
-  
-        svg {
-          width: 30px;
-          height: 30px;
-        }
+        color: var(--maroon-bright);
       }
     }
   }
-  
-  .app__navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  
-    padding: 1rem;
-  
-    .app__navigation-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #cbcbcb;
-      margin: 0.5rem;
-  
-      transition: background-color 0.2s ease-in-out;
-  
-      &:hover {
-        background-color: var(--secondary-color);
-      }
-  
-      @media screen and (min-width: 2000px) {
-        width: 20px;
-        height: 20px;
-      }
-    }
+}
+
+
+/* ================================
+   OLD NAVIGATION DOTS
+================================ */
+
+.app__navigation {
+  display: none;
+}
+
+
+/* ================================
+   COPYRIGHT
+================================ */
+
+.copyright {
+  width: 100%;
+
+  padding: 2rem 0 0;
+
+  display: flex;
+  justify-content: flex-end;
+
+  p {
+    color: var(--gray-color);
+
+    font-size: 0.75rem;
+
+    text-transform: none;
   }
-  
-  @media screen and (max-width: 500px) {
-    .app__navigation,
-    .app__social {
-      display: none;
-    }
-  
-    .copyright {
-      padding: 2rem;
-    }
+}
+
+
+/* ================================
+   GENERIC CARD
+================================ */
+
+.v2-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.008)
+    );
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+
+    border-color: var(--border-maroon);
+
+    box-shadow:
+      0 16px 40px rgba(0, 0, 0, 0.25);
   }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media screen and (max-width: 900px) {
+  .app__social {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .copyright {
+    padding: 1.5rem 0;
+  }
+}

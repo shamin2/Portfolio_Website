@@ -1,14 +1,27 @@
-import React from 'react'
-import { About, Footer, Header, Skills, Work }  from './container';
+import React from 'react';
+
+import {
+  About,
+  Experience,
+  Footer,
+  Header,
+  Skills,
+  Projects,
+  Certifications,
+} from './container';
+
 import { Navbar } from './components';
 import './App.scss';
+
 const App = () => (
-    <div className="app">
+  <div className="app">
     <Navbar />
     <Header />
     <About />
-    <Work />
+    <Experience />
+    <Projects />
     <Skills />
+    <Certifications />
     <Footer />
   </div>
 );

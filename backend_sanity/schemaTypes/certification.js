@@ -1,55 +1,45 @@
 import { defineField, defineType } from 'sanity';
 
 export default defineType({
-  name: 'works',
-  title: 'Projects',
+  name: 'certification',
+  title: 'Certifications',
   type: 'document',
 
   fields: [
     defineField({
       name: 'title',
-      title: 'Project Title',
+      title: 'Certification Name',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      rows: 4,
+      name: 'issuer',
+      title: 'Issuer',
+      type: 'string',
       validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'imgUrl',
-      title: 'Project Image',
+      name: 'image',
+      title: 'Credential Image',
       type: 'image',
       options: {
         hotspot: true,
       },
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'technologies',
-      title: 'Technologies',
-      type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
+      name: 'year',
+      title: 'Year',
+      type: 'number',
+      validation: (Rule) => Rule.required(),
     }),
 
     defineField({
-      name: 'codeLink',
-      title: 'GitHub Repository',
-      type: 'url',
-    }),
-
-    defineField({
-      name: 'projectLink',
-      title: 'Live Demo',
+      name: 'credentialUrl',
+      title: 'Credential URL',
       type: 'url',
     }),
 
@@ -64,7 +54,8 @@ export default defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'imgUrl',
+      subtitle: 'issuer',
+      media: 'image',
     },
   },
 });

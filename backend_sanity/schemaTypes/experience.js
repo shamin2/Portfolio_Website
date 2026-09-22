@@ -21,6 +21,15 @@ export default defineType({
     }),
 
     defineField({
+      name: 'logo',
+      title: 'Company Logo',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+
+    defineField({
       name: 'location',
       title: 'Location',
       type: 'string',
@@ -30,9 +39,6 @@ export default defineType({
       name: 'startDate',
       title: 'Start Date',
       type: 'date',
-      options: {
-        dateFormat: 'MMM YYYY',
-      },
       validation: (Rule) => Rule.required(),
     }),
 
@@ -40,9 +46,6 @@ export default defineType({
       name: 'endDate',
       title: 'End Date',
       type: 'date',
-      options: {
-        dateFormat: 'MMM YYYY',
-      },
     }),
 
     defineField({
@@ -56,42 +59,27 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
-      rows: 4,
+      rows: 3,
     }),
 
     defineField({
       name: 'highlights',
       title: 'Highlights',
       type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
+      of: [{ type: 'string' }],
     }),
 
     defineField({
       name: 'technologies',
       title: 'Technologies',
       type: 'array',
-      of: [
-        {
-          type: 'string',
-        },
-      ],
-    }),
-
-    defineField({
-      name: 'companyUrl',
-      title: 'Company Website',
-      type: 'url',
+      of: [{ type: 'string' }],
     }),
 
     defineField({
       name: 'order',
       title: 'Display Order',
       type: 'number',
-      description: 'Lower numbers appear first.',
       initialValue: 1,
     }),
   ],
@@ -99,13 +87,15 @@ export default defineType({
   preview: {
     select: {
       title: 'role',
-      subtitle: 'company',
+      company: 'company',
+      media: 'logo',
     },
 
-    prepare({ title, subtitle }) {
+    prepare({ title, company, media }) {
       return {
         title,
-        subtitle,
+        subtitle: company,
+        media,
       };
     },
   },
